@@ -4,7 +4,7 @@ makeCacheMatrix <- function(x = numeric()) {
                 x <<- nv
                 m <<- NULL
         }
-        getMatrix <- function() { x }
+        getMatrix <- function() { x } #store x into getMatrix
         cacInv <- function(inv) { m <<- inv}
         getInv <- function() { m }
         list(setMatrix = setMatrix, getMatrix = getMatrix,
@@ -13,7 +13,7 @@ makeCacheMatrix <- function(x = numeric()) {
 
 mSolve <- function(y, ...) {
         inverse <- y$getInv()
-        if(!is.null(inverse)) {
+        if(!is.null(inverse)) { #judge if the getInv() retrieved from y is NULL
                 message("getting cached data")
                 return(inverse)
         }
